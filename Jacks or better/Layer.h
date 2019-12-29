@@ -1,25 +1,28 @@
 #pragma once
 #include <random>
-
+#include <vector>
 class Layer {
 public:
-	Layer(int height) {
-		layer = new Node[height];
-		Layer::height = height;
+	Layer(int previous, int height) {
+		layer = std::vector<Node>();
+		for (int i = 0; i < height; i++) {
+			layer.push_back(Node(previous));
+		}
 	}
-	~Layer() {
-		delete layer;
-	}
-	//Layer operator* (Layer rhs) const;
-	//Layer operator*= (Layer rhs);
+	std::vector<double> operator* (std::vector<double> rhs) const;
 private:
 	class Node {
 	public:
-		Node() {
-			double weight = ((rand() % (RAND_MAX - 2)) + 1)/RAND_MAX;
+		Node(int height) {
+			weights = std::vector<double>();
+			for (int i = 0; i < height; i++) {
+				weights.push_back(((double)(rand() % (RAND_MAX - 2) + 1))/RAND_MAX); //random generation on the interval (0,1)
+			}
 		}
+		double operator* (std::vector<double> rhs) const;
+
+		std::vector<double> weights;
 	};
-	Node* layer;
-	int height;
+	std::vector<Node> layer;
 };
 

@@ -111,7 +111,9 @@ int Game::getSuit(int number) const {
 int Game::getNumber(int number) const {
 	return int(number)%13 + 1;
 }
-
+int* Game::getHandNumbers() {
+	return hand;
+}
 void Game::displayHand() {
 	for (int i = 0; i < handSize; i++) {
 		std::cout << (std::to_string(i) + ") " + std::to_string(getNumber(hand[i])) + " of " + std::to_string(getSuit(hand[i]))) << std::endl;

@@ -22,6 +22,7 @@ public:
 	int getSuit(int number) const;
 	int getNumber(int number) const;
 	void displayHand();
+	int* getHandNumbers();
 private:
 	int hand[5];
 	int handSize = sizeof(hand) / sizeof(*hand);

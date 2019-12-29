@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 int main() {
+	
 	int score = 0;
 	while (true) {
 		Game game = Game();
