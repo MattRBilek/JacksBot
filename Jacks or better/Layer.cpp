@@ -13,5 +13,5 @@ double Layer::Node::operator*(std::vector<double> rhs) const {
 	for (int i = 0; i < rhs.size(); i++) {
 		calc += weights[i] * rhs[i];
 	}
-	return calc;
+	return ((calc / (abs(calc) + 1)) + 1) / 2;
 }
